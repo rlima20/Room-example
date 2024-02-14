@@ -1,35 +1,21 @@
 package com.example.novoteste.mapper
 
-import com.example.novoteste.entity.UserEntity
+import com.example.novoteste.entity.Entity
 import com.example.novoteste.model.User
 
 class UserMapper {
-    fun toMap(listOfUserEntity: List<UserEntity>): List<User> {
-        val listOfUser = mutableListOf<User>()
-        listOfUserEntity.forEach {
-            listOfUser.add(
-                User(
-                    id = it.id,
-                    user = it.user,
-                    email = it.email,
-                ),
-            )
-        }
-        return listOfUser
-    }
-
-    fun toMap(userEntity: UserEntity): User {
+    fun toMap(userEntity: Entity): User {
         return User(
             id = userEntity.id,
-            user = userEntity.user,
+            userName = userEntity.user,
             email = userEntity.email,
         )
     }
 
-    fun toMap(user: User): UserEntity {
-        return UserEntity(
+    fun toMap(user: User): Entity {
+        return Entity(
             id = user.id,
-            user = user.user,
+            user = user.userName,
             email = user.email,
         )
     }

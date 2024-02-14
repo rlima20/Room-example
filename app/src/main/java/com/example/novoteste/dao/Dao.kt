@@ -4,23 +4,23 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.novoteste.entity.UserEntity
+import com.example.novoteste.entity.Entity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface UserDao {
+interface Dao {
     @Query("SELECT * FROM user")
-    fun getAllUsers(): Flow<List<UserEntity>>
+    fun getAll(): Flow<List<Entity>>
 
     @Query("SELECT * FROM user WHERE id = :id")
-    fun getUserById(id: Int): Flow<UserEntity>
+    fun getById(id: Int): Flow<Entity>
 
     @Insert
-    suspend fun insertUser(user: UserEntity)
+    suspend fun insert(user: Entity)
 
     @Query("UPDATE user SET user = :user, email = :email WHERE id = :id")
-    suspend fun updateUser(id: Int, email: String, user: String)
+    suspend fun update(id: Int, email: String, user: String)
 
     @Delete
-    suspend fun deleteUser(user: UserEntity)
+    suspend fun delete(user: Entity)
 }
