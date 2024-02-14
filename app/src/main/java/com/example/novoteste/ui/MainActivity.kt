@@ -17,12 +17,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
-import com.example.novoteste.AppApplication
 import com.example.novoteste.R
-import com.example.novoteste.database.Database
 import com.example.novoteste.model.User
 import com.example.novoteste.viewmodel.ViewModel
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
