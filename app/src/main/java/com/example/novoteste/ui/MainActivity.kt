@@ -17,22 +17,20 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
-import androidx.room.Room
+import com.example.novoteste.AppApplication
 import com.example.novoteste.R
 import com.example.novoteste.database.Database
 import com.example.novoteste.model.User
 import com.example.novoteste.viewmodel.ViewModel
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
+
+    private val viewModel: ViewModel by viewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val database = Room.databaseBuilder(
-            this,
-            Database::class.java,
-            "user_database",
-        ).build()
-        val dao = database.dao()
-        val viewModel = ViewModel(dao)
 
         setContent {
             val listOfUsers by viewModel.listState.collectAsState()
